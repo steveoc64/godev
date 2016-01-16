@@ -1,0 +1,9 @@
+{
+	"Debug": false,
+	"DataSourceName": "user=postgres password=xxxxxx dbname=dbdbdb sslmode=disable",
+	"WebPort": 8000,
+	"MailServer": "mail.mysite.com",
+	"MailUser": "mailaccount",
+	"MailPasswd": "xxxxxx",
+	"MailPort": 465
+}
