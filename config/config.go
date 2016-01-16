@@ -20,8 +20,12 @@ type ConfigType struct {
 
 var Config ConfigType
 
+func Get() ConfigType {
+	return Config
+}
+
 // Load the config.json file, and override with runtime flags
-func LoadConfig() {
+func LoadConfig() ConfigType {
 	cf, err := os.Open("config.json")
 	if err != nil {
 		log.Println("Could not open config.json :", err.Error())
@@ -45,4 +49,6 @@ func LoadConfig() {
 		Config.Debug,
 		Config.DataSourceName,
 		Config.WebPort)
+
+	return Config
 }
