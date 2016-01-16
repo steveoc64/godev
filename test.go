@@ -4,14 +4,25 @@ import (
 	"fmt"
 	"github.com/labstack/echo"
 	"github.com/steveoc64/godev/config"
-	"github.com/steveoc64/godev/mail"
+	// "github.com/steveoc64/godev/mail"
+	"github.com/steveoc64/godev/smt"
 )
 
 func main() {
 
-	cfg := config.LoadConfig()
-	mail.InitMailer()
+	cpus := smt.Init()
+	fmt.Printf("Yo Ho Ho, here we Go on %d CPU cores\n", cpus)
 
+	cfg := config.LoadConfig()
+
+	/*
+		MailChannel := mail.InitMailer()
+			m := mail.NewMail()
+			m.SetHeader("To", "jack@sprat.com")
+			m.SetHeader("Subject", "Loan Application")
+			m.SetBody("text/html", "Awww Snap ! Your Loan Application has been denied  :(")
+			MailChannel <- m
+	*/
 	e := echo.New()
 	if cfg.Debug {
 		e.SetDebug(true)

@@ -68,7 +68,7 @@ func main() {
 	MailChannel <- m
 ```
 
-So inside your app, you create emails using the regular gomail funtions, and then just add them to the MailChannel 
+So inside your app, you create emails using the regular gomail functions, and then just add them to the MailChannel 
 queue.  A goroutine in the background works through the MailChannel queue, and does all the messy delivery stuff 
 for you.
 
