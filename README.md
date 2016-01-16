@@ -74,6 +74,27 @@ for you.
 
 ## SMT
 
+We have CPU cores ... lets use em !!!
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/steveoc64/godev/smt"
+)
+
+func main() {
+
+	cpus := smt.Init()
+	fmt.Printf("Yo Ho Ho, here we Go on %d CPU cores\n", cpus)
+```
+
+By default, this code uses numCores := runtime.NumCPU(), but your policy may vary.
+
+Clone this microlib if you want to maitain consitent CPU hogging policies across all your
+GO services.  (and we are going to produce a tonne of them this year - true ?)
+
 ## JWT
 
 ## Cors
