@@ -6,6 +6,7 @@ import (
 	"github.com/steveoc64/godev/config"
 	// "github.com/steveoc64/godev/mail"
 	"github.com/steveoc64/godev/db"
+	"github.com/steveoc64/godev/echocors"
 	"github.com/steveoc64/godev/smt"
 )
 
@@ -30,6 +31,7 @@ func main() {
 	if cfg.Debug {
 		e.SetDebug(true)
 	}
+	echocors.Init(e, cfg.Debug)
 
 	// Start the web server
 	if cfg.Debug {

@@ -99,6 +99,26 @@ GO services.  (and we are going to produce a tonne of them this year - true ?)
 
 ## Cors
 
+Code snippet to add Cors support to your Echo webserver
+
+```go
+package main
+
+import (
+	"github.com/labstack/echo"
+	"github.com/steveoc64/godev/echocors"
+)
+
+func main() {
+
+	e := echo.New()
+	if cfg.Debug {
+		e.SetDebug(true)
+	}
+	echocors.Init(e, cfg.Debug)
+
+```
+
 ## DB
 
 Basic setup for using DAT / Postgres in your app, using the config lib for 
