@@ -100,3 +100,21 @@ GO services.  (and we are going to produce a tonne of them this year - true ?)
 ## Cors
 
 ## DB
+
+Basic setup for using DAT / Postgres in your app, using the config lib for 
+runtime paramaters.
+
+```go
+package main
+
+import (
+	"github.com/steveoc64/godev/config"
+	"github.com/steveoc64/godev/db"
+)
+
+func main() {
+
+	cfg := config.LoadConfig()
+	DB := db.Init(cfg.DataSourceName)
+
+```
