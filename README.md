@@ -104,6 +104,9 @@ GO services.  (and we are going to produce a tonne of them this year - true ?)
 Basic setup for using DAT / Postgres in your app, using the config lib for 
 runtime paramaters.
 
+Does a few basic tuning things, and then tests the connection by doing a "select now()"
+
+
 ```go
 package main
 
