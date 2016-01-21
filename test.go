@@ -5,6 +5,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/steveoc64/godev/config"
 	// "github.com/steveoc64/godev/mail"
+	"github.com/steveoc64/godev/db"
 	"github.com/steveoc64/godev/smt"
 )
 
@@ -14,6 +15,8 @@ func main() {
 	fmt.Printf("Yo Ho Ho, here we Go on %d CPU cores\n", cpus)
 
 	cfg := config.LoadConfig()
+
+	db.Init(cfg.DataSourceName)
 
 	/*
 		MailChannel := mail.InitMailer()
