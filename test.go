@@ -7,7 +7,9 @@ import (
 	// "github.com/steveoc64/godev/mail"
 	"github.com/steveoc64/godev/db"
 	"github.com/steveoc64/godev/echocors"
+	"github.com/steveoc64/godev/sms"
 	"github.com/steveoc64/godev/smt"
+	"log"
 )
 
 func main() {
@@ -18,6 +20,12 @@ func main() {
 	cfg := config.LoadConfig()
 
 	db.Init(cfg.DataSourceName)
+
+	smsbal, smserr := sms.GetBalance()
+	if smserr != nil {
+		log.Fatal("Cannot retrieve SMS account info", smserr.Error())
+	}
+	log.Println("... Remaining SMS Balance =", smsbal)
 
 	/*
 		MailChannel := mail.InitMailer()

@@ -16,6 +16,9 @@ type ConfigType struct {
 	MailUser       string
 	MailPasswd     string
 	MailPort       int
+	SMSServer      string
+	SMSUser        string
+	SMSPasswd      string
 }
 
 var Config ConfigType
@@ -43,6 +46,9 @@ func LoadConfig() ConfigType {
 	flag.IntVar(&Config.MailPort, "mailport", Config.MailPort, "Mailserver Port")
 	flag.StringVar(&Config.MailUser, "mailuser", Config.MailUser, "Mailserver UserName")
 	flag.StringVar(&Config.MailPasswd, "mailpasswd", Config.MailPasswd, "Mailserver Passwd")
+	flag.StringVar(&Config.SMSServer, "smsserver", Config.SMSServer, "SMS Server")
+	flag.StringVar(&Config.SMSUser, "smsuser", Config.SMSUser, "SMS Username")
+	flag.StringVar(&Config.SMSPasswd, "smspasswd", Config.SMSPasswd, "SMS Password")
 	flag.Parse()
 
 	log.Printf("Starting\n\tDebug: \t\t%t\n\tSQLServer: \t%s\n\tWeb Port: \t%d\n",
