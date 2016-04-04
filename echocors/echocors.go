@@ -2,6 +2,7 @@ package echocors
 
 import (
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/engine/standard"
 	"github.com/rs/cors"
 )
 
@@ -12,5 +13,5 @@ func Init(e *echo.Echo, Debug bool) {
 		AllowCredentials: true,
 		Debug:            Debug,
 	})
-	e.Use(c.Handler)
+	e.Use(standard.WrapMiddleware(c.Handler))
 }
