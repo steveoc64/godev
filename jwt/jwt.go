@@ -5,13 +5,13 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/labstack/echo"
 	"io/ioutil"
 	"log"
 	"reflect"
 	"runtime"
 	"time"
+
+	"github.com/labstack/echo"
 )
 
 // location of the files used for signing and verification
@@ -101,7 +101,7 @@ func generateToken(ID int, Role string, Username string, Sites []int) (string, e
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //
-func securityCheck(c *echo.Context, action string) (map[string]interface{}, error) {
+func securityCheck(c echo.Context, action string) (map[string]interface{}, error) {
 
 	t := c.Request().Header["Authorization"]
 	if len(t) < 1 {
