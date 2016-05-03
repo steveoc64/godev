@@ -8,5 +8,6 @@
 	"MailPort": 465,
 	"SMSServer": "https://api.smsbroadcast.com.au/api-adv.php",
 	"SMSUser": "xxxxxxx",
-	"SMSPasswd": "yyyyyy"		
+	"SMSPasswd": "yyyyyy",		
+	"SMSOn": false		
 }

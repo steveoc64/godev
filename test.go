@@ -2,14 +2,18 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/engine/standard"
+
 	"github.com/steveoc64/godev/config"
 	// "github.com/steveoc64/godev/mail"
+	"log"
+
 	"github.com/steveoc64/godev/db"
 	"github.com/steveoc64/godev/echocors"
 	"github.com/steveoc64/godev/sms"
 	"github.com/steveoc64/godev/smt"
-	"log"
 )
 
 func main() {
@@ -45,5 +49,7 @@ func main() {
 	if cfg.Debug {
 		fmt.Printf("... Starting Web Server on port %d", cfg.WebPort)
 	}
-	e.Run(fmt.Sprintf(":%d", cfg.WebPort))
+	std := standard.New(fmt.Sprintf(":%d", cfg.WebPort))
+	// std.SetHandler(e)
+	e.Run(std)
 }

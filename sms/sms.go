@@ -2,17 +2,23 @@ package sms
 
 import (
 	"errors"
-	"github.com/steveoc64/godev/config"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
+
+	"github.com/steveoc64/godev/config"
 )
 
 func GetBalance() (int, error) {
 	c := config.Get()
+
+	if c.SMSOn == false {
+		return 0, nil
+	}
+
 	resp, err := http.PostForm(
 		c.SMSServer,
 		url.Values{
