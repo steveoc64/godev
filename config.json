@@ -1,6 +1,6 @@
 {
 	"Debug": false,
-	"DataSourceName": "user=postgres password=unx911zxx dbname=cmms sslmode=disable",
+	"DataSourceName": "user=postgres password=postgrespasswd dbname=cmms sslmode=disable",
 	"WebPort": 8000,
 	"MailServer": "mail.mysite.com",
 	"MailUser": "mailaccount",
