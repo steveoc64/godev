@@ -50,7 +50,7 @@ func LoadConfig() ConfigType {
 	flag.StringVar(&Config.SMSServer, "smsserver", Config.SMSServer, "SMS Server")
 	flag.StringVar(&Config.SMSUser, "smsuser", Config.SMSUser, "SMS Username")
 	flag.StringVar(&Config.SMSPasswd, "smspasswd", Config.SMSPasswd, "SMS Password")
-	flag.BoolVar(&Config.SMSOn, "smson", Config.SMSOn, "SMS On")
+	flag.BoolVar(&Config.SMSOn, "smson", Config.SMSOn, "SMS On/Off")
 	flag.Parse()
 
 	log.Printf("Starting\n\tDebug: \t\t%t\n\tSQLServer: \t%s\n\tWeb Port: \t%d\n",
