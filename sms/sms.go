@@ -2,6 +2,7 @@ package sms
 
 import (
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -62,6 +63,35 @@ func GetBalance() (int, error) {
 	}
 	s := string(body[3:])
 	return strconv.Atoi(s)
+}
+
+func GetSMSIntlBalance() (int, error) {
+	c := config.Get()
+
+	if c.SMSOn == false {
+		return 0, nil
+	}
+
+	resp, err := http.Get(fmt.Sprintf("%s/user/get_credits/1/1.1?username=%s&password=%s",
+		c.SMSIntlServer,
+		c.SMSIntlUser,
+		c.SMSIntlPasswd))
+
+	if err != nil {
+		log.Println("HTTP Get Error", err.Error())
+		return 0, err
+	}
+
+	// read the response
+	body, err := ioutil.ReadAll(resp.Body)
+	resp.Body.Close()
+
+	if err != nil {
+		log.Println(err.Error())
+		return 0, err
+	}
+	print("got response of", body)
+	return 1, nil
 }
 
 func Send(number string, message string, ref string) error {
