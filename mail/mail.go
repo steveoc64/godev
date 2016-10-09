@@ -2,10 +2,11 @@ package mail
 
 import (
 	"crypto/tls"
-	"github.com/steveoc64/godev/config"
-	"gopkg.in/gomail.v2"
 	"log"
 	"time"
+
+	"github.com/steveoc64/godev/config"
+	gomail "gopkg.in/gomail.v2"
 )
 
 var MailChannel = make(chan *gomail.Message, 64)
@@ -13,7 +14,7 @@ var MailChannel = make(chan *gomail.Message, 64)
 func NewMail() *gomail.Message {
 
 	m := gomail.NewMessage()
-	m.SetHeader("From", "xxx@yyy.com")
+	m.SetHeader("From", "umpire@wargaming.io")
 	return m
 }
 
@@ -25,7 +26,7 @@ func InitMailer() chan *gomail.Message {
 func mailerDaemon() {
 
 	c := config.Get()
-	log.Println("starting mailer with", c)
+	log.Println("starting mailer with", c.MailServer, c.MailPort, c.MailUser, c.MailPasswd)
 	d := gomail.NewPlainDialer(
 		c.MailServer,
 		c.MailPort,
